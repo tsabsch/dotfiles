@@ -1,0 +1,7 @@
+# show hidden files
+--hidden
+
+# don't show .git/*
+--glob=!.git/*
+
+
