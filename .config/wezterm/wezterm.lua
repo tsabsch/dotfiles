@@ -9,6 +9,12 @@ local config = wezterm.config_builder()
 -- Find them here: https://wezfurlong.org/wezterm/colorschemes/index.html
 config.color_scheme = "catppuccin-mocha"
 
+-- Make inactive panes dimmed to highlight the active pane
+config.inactive_pane_hsb = {
+	saturation = 0.9,
+	brightness = 0.5,
+}
+
 -- Choose your favourite font, make sure it's installed on your machine
 config.font = wezterm.font({ family = "Fira Code" })
 config.font_size = 12

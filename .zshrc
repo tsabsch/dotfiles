@@ -9,6 +9,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+#zoxide
+export ZOXIDE_CMD_OVERRIDE=cd
+# zstyle :omz:plugins:ssh-agent agent-forwarding yes
+zstyle :omz:plugins:ssh-agent quiet yes
+
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/tsabsch/.oh-my-zsh"
 
@@ -23,6 +28,10 @@ ZSH_THEME="arrow"
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+#
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+HYPHEN_INSENSITIVE="true"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -30,7 +39,12 @@ ZSH_THEME="arrow"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  evalcache
+  direnv
+  docker
+  fzf
+  poetry
+  zoxide
+  # evalcache
   git
   gcloud
   #kubectl
@@ -49,15 +63,13 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/Users/tsabsch/.local/bin:$PATH"
 export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
 
-_evalcache op completion zsh; compdef _op op
-eval $(ssh-agent) &>/dev/null
-
 export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
 
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 alias ls=lsd
 alias v=nvim
+alias lg=lazygit
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 # Set up fzf key bindings and fuzzy completion
@@ -70,3 +82,11 @@ export PATH="/usr/local/sbin:$PATH"
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+
+# reduce log level by direnv
+export DIRENV_LOG_FORMAT=
+# load direnv for tmux
+# alias tmux='direnv exec / tmux'
+
+# Created by `pipx` on 2024-04-04 08:58:47
+export PATH="$PATH:/Users/tsabsch/.local/bin"
