@@ -26,6 +26,8 @@ email = tim.sabsch@codecentric.de
 
 [includeIf "gitdir:~/private/"]
 	path = ~/private/.gitconfig
+[includeIf "gitdir:~/gnome/"]
+	path = ~/private/.gitconfig
 [push]
 	autoSetupRemote = true
 

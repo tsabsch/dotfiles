@@ -3,8 +3,6 @@ local wezterm = require("wezterm")
 -- Creates a config object which we will be adding our config to
 local config = wezterm.config_builder()
 
--- (This is where our config will go)
-
 -- Pick a colour scheme. WezTerm ships with more than 1,000!
 -- Find them here: https://wezfurlong.org/wezterm/colorschemes/index.html
 config.color_scheme = "catppuccin-mocha"
@@ -32,6 +30,11 @@ config.window_frame = {
 	font = wezterm.font({ family = "Fira Code", weight = "Bold" }),
 	font_size = 12,
 }
+
+-- on macOS, only the right OPT key is treated as OPT. On my Keychron + EurKey layout,
+-- this is problematic since I don't have a right OPT
+-- see https://wezfurlong.org/wezterm/config/keyboard-concepts.html#macos-left-and-right-option-key
+config.send_composed_key_when_left_alt_is_pressed = true
 
 -- wezterm.on("update-status", function(window)
 -- 	-- Grab the utf8 character for the "powerline" left facing

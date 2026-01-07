@@ -21,7 +21,7 @@ export ZSH="/Users/tsabsch/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="arrow"
+# ZSH_THEME="arrow"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -52,6 +52,7 @@ plugins=(
   history
   pyenv
   # tmux
+  direnv
 )
 
 # ZSH_TMUX_AUTOSTART=true
@@ -71,6 +72,7 @@ alias ls=lsd
 alias v=nvim
 alias lg=lazygit
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias lg="lazygit"
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
@@ -88,5 +90,4 @@ export DIRENV_LOG_FORMAT=
 # load direnv for tmux
 # alias tmux='direnv exec / tmux'
 
-# Created by `pipx` on 2024-04-04 08:58:47
-export PATH="$PATH:/Users/tsabsch/.local/bin"
+eval "$(starship init zsh)"
